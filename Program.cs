@@ -88,6 +88,7 @@ namespace SelfCheckout
             {
                 items.Add(new CartItem(product, quantity));
             }
+            Console.Clear();
             Console.WriteLine($"{quantity} x {product.Name} dodano do koszyka.");
         }
 
@@ -260,6 +261,9 @@ namespace SelfCheckout
                     Console.Write("Podaj ilość: ");
                     int quantity = int.Parse(Console.ReadLine());
                     cart.AddProduct(products[productIndex], quantity);
+                    Console.WriteLine("Naciśnij dowolny klawisz, aby kontynuować...");
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 else
                 {
