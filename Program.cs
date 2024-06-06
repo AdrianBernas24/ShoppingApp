@@ -92,13 +92,21 @@ namespace SelfCheckout
             Console.WriteLine($"{quantity} x {product.Name} dodano do koszyka.");
         }
 
-        public void RemoveProduct(string productName)
+        public void RemoveProduct(string productName, int quantity)
         {
             var item = items.Find(i => i.Product.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
             if (item != null)
             {
-                items.Remove(item);
-                Console.WriteLine($"{item.Product.Name} usunięto z koszyka.");
+                if (item.Quantity <= quantity)
+                {
+                    items.Remove(item);
+                    Console.WriteLine($"{item.Product.Name} całkowicie usunięto z koszyka.");
+                }
+                else
+                {
+                    item.Quantity -= quantity;
+                    Console.WriteLine($"{quantity} x {item.Product.Name} usunięto z koszyka.");
+                }
             }
             else
             {
@@ -139,22 +147,8 @@ namespace SelfCheckout
         {
             ShoppingCart cart = new ShoppingCart();
 
-            // Tworzenie produktów w kategoriach
-            var products = new List<FoodProduct>
-            {
-                new Bakery("Chleb", 4.50m),
-                new Bakery("Bułka", 1.20m),
-                new Bakery("Rogalik", 2.50m),
-                new Vegetable("Marchewka", 2.00m),
-                new Vegetable("Ziemniak", 3.00m),
-                new Vegetable("Pomidor", 3.50m),
-                new Fruit("Jabłko", 1.50m),
-                new Fruit("Banan", 2.00m),
-                new Fruit("Pomarańcza", 3.00m),
-                new Dairy("Mleko", 3.20m),
-                new Dairy("Jogurt", 2.50m),
-                new Dairy("Ser", 5.00m),
-            };
+            // Wywołanie metody tworzącej produkty
+            var products = ProductFactory.CreateProducts();
 
             bool isShopping = true;
             while (isShopping)
@@ -274,25 +268,33 @@ namespace SelfCheckout
 
         static void EditCart(ShoppingCart cart)
         {
-            cart.DisplayCart();
-            Console.WriteLine("Wybierz działanie:");
-            Console.WriteLine("1. Usuń produkt z koszyka");
-            Console.WriteLine("2. Wróć do menu głównego");
-            Console.Write("Twój wybór: ");
-            int choice = int.Parse(Console.ReadLine());
-
-            switch (choice)
+            bool editing = true;
+            while (editing)
             {
-                case 1:
-                    Console.Write("Podaj nazwę produktu do usunięcia: ");
-                    string productName = Console.ReadLine();
-                    cart.RemoveProduct(productName);
-                    break;
-                case 2:
-                    break;
-                default:
-                    Console.WriteLine("Niepoprawny wybór. Spróbuj ponownie.");
-                    break;
+                Console.Clear();
+                cart.DisplayCart();
+                Console.WriteLine("Wybierz działanie:");
+                Console.WriteLine("1. Usuń produkt z koszyka");
+                Console.WriteLine("2. Wróć do menu głównego");
+                Console.Write("Twój wybór: ");
+                int choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Podaj nazwę produktu do usunięcia: ");
+                        string productName = Console.ReadLine();
+                        Console.Write("Podaj ilość do usunięcia: ");
+                        int quantity = int.Parse(Console.ReadLine());
+                        cart.RemoveProduct(productName, quantity);
+                        break;
+                    case 2:
+                        editing = false;
+                        break;
+                    default:
+                        Console.WriteLine("Niepoprawny wybór. Spróbuj ponownie.");
+                        break;
+                }
             }
         }
 
@@ -313,6 +315,10 @@ namespace SelfCheckout
             {
                 Console.WriteLine("Niepoprawna kwota. Spróbuj ponownie.");
             }
+
+            Console.WriteLine("Naciśnij dowolny klawisz, aby wrócić do menu głównego...");
+            Console.ReadKey();
         }
+
     }
 }
