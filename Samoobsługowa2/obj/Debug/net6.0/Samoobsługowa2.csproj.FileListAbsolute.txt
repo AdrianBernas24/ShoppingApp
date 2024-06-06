@@ -1,0 +1,14 @@
+E:\Zadania w domu\Samoobsługowa2\bin\Debug\net6.0\Samoobsługowa2.exe
+E:\Zadania w domu\Samoobsługowa2\bin\Debug\net6.0\Samoobsługowa2.deps.json
+E:\Zadania w domu\Samoobsługowa2\bin\Debug\net6.0\Samoobsługowa2.runtimeconfig.json
+E:\Zadania w domu\Samoobsługowa2\bin\Debug\net6.0\Samoobsługowa2.dll
+E:\Zadania w domu\Samoobsługowa2\bin\Debug\net6.0\Samoobsługowa2.pdb
+E:\Zadania w domu\Samoobsługowa2\obj\Debug\net6.0\Samoobsługowa2.GeneratedMSBuildEditorConfig.editorconfig
+E:\Zadania w domu\Samoobsługowa2\obj\Debug\net6.0\Samoobsługowa2.AssemblyInfoInputs.cache
+E:\Zadania w domu\Samoobsługowa2\obj\Debug\net6.0\Samoobsługowa2.AssemblyInfo.cs
+E:\Zadania w domu\Samoobsługowa2\obj\Debug\net6.0\Samoobsługowa2.csproj.CoreCompileInputs.cache
+E:\Zadania w domu\Samoobsługowa2\obj\Debug\net6.0\Samoobsługowa2.dll
+E:\Zadania w domu\Samoobsługowa2\obj\Debug\net6.0\refint\Samoobsługowa2.dll
+E:\Zadania w domu\Samoobsługowa2\obj\Debug\net6.0\Samoobsługowa2.pdb
+E:\Zadania w domu\Samoobsługowa2\obj\Debug\net6.0\Samoobsługowa2.genruntimeconfig.cache
+E:\Zadania w domu\Samoobsługowa2\obj\Debug\net6.0\ref\Samoobsługowa2.dll
